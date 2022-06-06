@@ -49,7 +49,7 @@
 https://gz.blockchair.com/  
   
 ### Вы должны помнить!!!
-![LONG](https://github.com/Noname400/Hunt-to-Mnemonic/blob/main/image/longlonglongtime.jpg)
+![LONG](https://github.com/Noname400/HtM-Lite/blob/main/image/longlonglongtime.jpg)
 
 ### Отказ от ответственности.
 Программное обеспечение предоставлено только в целях ознакомления. За все последствия использования ПО пользователи несут личную ответственность.
