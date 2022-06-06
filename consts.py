@@ -10,14 +10,14 @@
 from secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address
 from bip32 import BIP32
 from colorama import Back, Fore, Style, init
-from lib.mnemonic import Mnemonic
+from mnemonic import Mnemonic
 from multiprocessing import Lock, Process, Value
 import logging
 from logging import Formatter
 import argparse, ctypes, datetime
 import multiprocessing
 import os, sys, time
-from lib.filter import BloomFilter
+from filter import BloomFilter
 init(autoreset = True)
 
 yellow = Fore.YELLOW+Style.BRIGHT
