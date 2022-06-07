@@ -38,12 +38,11 @@ def b32(seed, fc):
             pvk_int = int(pvk.hex(),16)
             bip_h160_c = privatekey_to_h160(0, True, pvk_int)
             bip_h160_uc = privatekey_to_h160(0, False, pvk_int)
-            #----------------------------------------------------------------    
             if bip_h160_c.hex() in inf.bf_btc or bip_h160_uc.hex() in inf.bf_btc:
                 addr_c = hash_to_address(0,False,bip_h160_c)
                 addr_uc = hash_to_address(0,True,bip_h160_uc)
-                print(f'\n[F][Mode 32] Found address: seed:{hex(seed)} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
-                logger_found.info(f'[F][Mode 32] Found address: seed:{hex(seed)} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
+                print(f'\n[F][Mode 32] Found address: seed:{seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
+                logger_found.info(f'[F][Mode 32] Found address: seed:{seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
                 fc.increment(1)
             co += 2
     return co
@@ -78,8 +77,8 @@ def bBTC(seed, fc):
             if bip_h160_c.hex() in inf.bf_btc or bip_h160_uc.hex() in inf.bf_btc:
                 addr_c = hash_to_address(0,False,bip_h160_c)
                 addr_uc = hash_to_address(0,True,bip_h160_uc)
-                print(f'\n[F][Mode BTC] Found address: seed:{hex(seed)} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
-                logger_found.info(f'[F][Mode BTC] Found address: seed:{hex(seed)} |  PVK compress:{btc_pvk_to_wif(pvk_int,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk_int,False)} - {addr_uc}')
+                print(f'\n[F][Mode BTC] Found address: seed:{seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk,False)} - {addr_uc}')
+                logger_found.info(f'[F][Mode BTC] Found address: seed:{seed.hex()} |  PVK compress:{btc_pvk_to_wif(pvk,True)} - {addr_c} | PVK uncompress:{btc_pvk_to_wif(pvk,False)} - {addr_uc}')
                 fc.increment(1)
             co += 2
     return co

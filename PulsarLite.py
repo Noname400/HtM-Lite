@@ -42,7 +42,7 @@ def run(*args):
     try:
         while True:
             mnemo = Mnemonic("english")
-            words = mnemo.generate(strength=128) #world evolve cry outer garden common differ jump few diet cliff lumber
+            words = mnemo.generate(strength=128) #'world evolve cry outer garden common differ jump few diet cliff lumber'
             seed = mnemo.to_seed(words, passphrase="")
             start_time = time.time()
             if inf.bip == '32': 
