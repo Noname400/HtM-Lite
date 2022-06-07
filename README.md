@@ -35,6 +35,20 @@
     python bloom-create.py <in file> <out file>  
         in file - текстовый файл с адресами (один адрес на одну срочку)  
         out file - файл блюм фильтра  
+    
+    BTC:
+    1. Загружаем базу данных BTC в папку BF-create.
+    2. Открываю командную строку папки BF-create и вводим команду:
+    3. python bloom-create.py btc.txt bc.bf
+    btc.txt — текстовый файл с адресами (по одному адресу в строке)
+    btc.bf - файл фильтра blum (создается автоматически)
+
+    ETH:
+    1. Загружем базу ETH в папку BF-create. Адреса в любом формате.
+    2. Открываю командную строку папки BF-create и ввожу команду:
+    3. python bloom-create.py eth.txt with.bf
+    eth.txt — текстовый файл с адресами (по одному адресу в строке)
+    eth.bf - файл фильтра blum (создается автоматически)
   
 #### Ключи использования
     python -B PulsarLite.py -b BTC -dbbtc BF\btc.bf -th 3 -sl 5

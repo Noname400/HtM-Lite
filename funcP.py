@@ -32,7 +32,7 @@ def b32(seed, fc):
     co = 0
     bip = BIP32.from_seed(seed)
     for path in inf.l32:
-        for num in range(20):
+        for num in range(10):
             patchs = f"{path}{num}"
             pvk = bip.get_privkey_from_path(patchs)
             pvk_int = int(pvk.hex(),16)
@@ -69,7 +69,7 @@ def bBTC(seed, fc):
     co = 0
     bip = BIP32.from_seed(seed)
     for nom3 in range(2):
-        for nom in range(20):
+        for nom in range(10):
             patchs = f"m/44'/0'/0'/{nom3}/{nom}"
             pvk = bip.get_privkey_from_path(patchs)
             pvk_int = int(pvk.hex(),16)

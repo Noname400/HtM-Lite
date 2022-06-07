@@ -17,6 +17,7 @@ eggs/
 lib64/
 parts/
 sdist/
+BF/
 var/
 wheels/
 share/python-wheels/
@@ -44,6 +45,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+*.bf
 *.cover
 *.py,cover
 .hypothesis/

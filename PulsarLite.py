@@ -28,7 +28,8 @@ def run(*args):
     found_counter = args[7]
     mnem_counter = args[8]
 
-
+    count = 0
+    count100 = 100
     tc = 0
     ind:int = 1
     if inf.bip == 'BTC' or inf.bip == '32': 
@@ -66,10 +67,12 @@ def run(*args):
             speed_float, speed_hash = convert_int(speed)
 
             if multiprocessing.current_process().name == '0':
-                print(f'{yellow}> Cores:{pc} | Mnemonic:{mc} | MNEM:{tc_float} {tc_hash} | Speed:{speed_float} {speed_hash}/sec | Found:{fc}',end='\r')
+                if count == count100:
+                    print(f'{yellow}> Cores:{pc} | Mnemonic:{mc} | MNEM:{tc_float} {tc_hash} | Speed:{speed_float} {speed_hash}/sec | Found:{fc}',end='\r')
+                    count100 += 100
             inf.count = 0
             ind += 1
-
+            count += 1
                 
     except(KeyboardInterrupt, SystemExit):
         print('\n[EXIT] Interrupted by the user.')
