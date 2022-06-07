@@ -62,7 +62,7 @@ class Counter:
             return self.val.value
 
 class inf:
-    version:str = '* Pulsar Lite v1.3.0 *'
+    version:str = '* Pulsar Lite v1.4.0 *'
     #general
     th:int = 1 #number of processes
     db_btc:str = ''

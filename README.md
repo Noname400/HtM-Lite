@@ -30,6 +30,7 @@
     pip install bitarray
     pip install colorama
     pip install bip32
+    pip install mmh3
 
 #### Создайте BloobFilter (BF-create\bloom-create.py)
     python bloom-create.py <in file> <out file>  
