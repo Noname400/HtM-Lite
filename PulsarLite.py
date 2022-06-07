@@ -63,6 +63,7 @@ def run(*args):
             tc = tc
             tc_float, tc_hash = convert_int(tc)
             btc = tc - ftc
+            if st == 0 : st = 0.01
             speed = int((btc/st))
             speed_float, speed_hash = convert_int(speed)
 
