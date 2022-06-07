@@ -7,7 +7,7 @@
 """
 
 
-from secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address
+from secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address, btc_pvk_to_wif
 from bip32 import BIP32
 from colorama import Back, Fore, Style, init
 from mnemonic import Mnemonic
