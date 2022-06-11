@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#Other block
+btc.txt
+btc.bf
+eth.bf
+eth.txt
+*.log
+
 # C extensions
 
 # Distribution / packaging

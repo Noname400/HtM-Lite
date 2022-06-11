@@ -16,8 +16,9 @@ import logging
 from logging import Formatter
 import argparse, ctypes, datetime
 import multiprocessing
-import os, sys, time
+import sys, time
 from filter import BloomFilter
+from os import system, path, name
 init(autoreset = True)
 
 yellow = Fore.YELLOW+Style.BRIGHT
@@ -25,22 +26,22 @@ red = Fore.RED+Style.BRIGHT
 clear = Style.RESET_ALL
 green = Fore.GREEN+Style.BRIGHT
 
-current_path = os.path.dirname(os.path.realpath(__file__))
+current_path = path.dirname(path.realpath(__file__))
 logger_found = logging.getLogger('FOUND')
 logger_found.setLevel(logging.INFO)
-handler_found = logging.FileHandler(os.path.join(current_path, 'found.log'), 'a' , encoding ='utf-8')
+handler_found = logging.FileHandler(path.join(current_path, 'found.log'), 'a' , encoding ='utf-8')
 handler_found.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
 logger_found.addHandler(handler_found)
 
 logger_info = logging.getLogger('INFO')
 logger_info.setLevel(logging.INFO)
-handler_info = logging.FileHandler(os.path.join(current_path, 'info.log'), 'a' , encoding ='utf-8')
+handler_info = logging.FileHandler(path.join(current_path, 'info.log'), 'a' , encoding ='utf-8')
 handler_info.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
 logger_info.addHandler(handler_info)
 
 logger_err = logging.getLogger('ERROR')
 logger_err.setLevel(logging.DEBUG)
-handler_err = logging.FileHandler(os.path.join(current_path, 'error.log'), 'w' , encoding ='utf-8')
+handler_err = logging.FileHandler(path.join(current_path, 'error.log'), 'w' , encoding ='utf-8')
 handler_err.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
 logger_err.addHandler(handler_err)
 

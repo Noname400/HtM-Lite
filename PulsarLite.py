@@ -4,7 +4,7 @@
 """
 @author: Noname400
 """
-
+    
 from funcP import *
 from consts import *
 
@@ -81,6 +81,7 @@ def run(*args):
         exit()
 
 if __name__ == "__main__":
+    cls()
     inf.bip, inf.db_btc, inf.db_eth, inf.th, inf.delay  = createParser()
     print('-'*70,end='\n')
     print(f'{green}Thank you very much: @iceland2k14 for his libraries!')

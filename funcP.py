@@ -6,6 +6,9 @@
 
 from consts import *
 
+def cls():
+    system('cls' if name=='nt' else 'clear')
+
 def convert_int(num:int):
     dict_suffix = {0:'Key', 1:'KKey', 2:'MKey', 3:'GKey', 4:'TKey', 5:'PKey', 6:'EKeys'}
     num *= 1.0
