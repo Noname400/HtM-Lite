@@ -6,7 +6,7 @@
     "EthServers": ["https://api.blockchair.com/ethereum/dashboards/address/","https://api.etherscan.io/api?module=account&action=balance&address="]}
 }
 { "general": {
-    "version": 1.2,
+    "version": 1.5,
     "mode": "BTC",
     "description": "local",
     "thread": 1}
