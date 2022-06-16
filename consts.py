@@ -10,14 +10,14 @@
 from secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address, btc_pvk_to_wif
 from bip32 import BIP32
 from colorama import Back, Fore, Style, init
-from mnemonic import Mnemonic
+from libraries.mnemonic import Mnemonic
 from multiprocessing import Lock, Process, Value
 import logging
 from logging import Formatter
 import argparse, ctypes, datetime
 import multiprocessing
 import sys, time
-from filter import BloomFilter
+from libraries.filter import BloomFilter
 from os import system, path, name
 init(autoreset = True)
 
@@ -63,7 +63,7 @@ class Counter:
             return self.val.value
 
 class inf:
-    version:str = '* Pulsar Lite v1.6.1 *'
+    version:str = '* Pulsar Lite v1.7 *'
     #general
     th:int = 1 #number of processes
     db_btc:str = ''

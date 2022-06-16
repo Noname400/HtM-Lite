@@ -38,7 +38,7 @@ def run(*args):
     elif inf.bip == 'ETH': 
         inf.bf_eth = load_BF(inf.db_eth)
         process_counter.increment(1)
-        
+
     try:
         while True:
             mnemo = Mnemonic("english")

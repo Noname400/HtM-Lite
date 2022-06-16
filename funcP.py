@@ -60,9 +60,9 @@ def bETH(seed, fc):
                 pvk = bip.get_privkey_from_path(patchs)
                 pvk_int = int(pvk.hex(),16)
                 addr = privatekey_to_ETH_address(pvk_int)
-                if addr in inf.bf_eth:
-                    print(f'\n[F][Mode ETH] Found address: {seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - addr:0x{addr}')
-                    logger_found.info(f'[F][Mode ETH] Found address: {seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - addr:0x{addr}')
+                if addr[2:] in inf.bf_eth:
+                    print(f'\n[F][Mode ETH] Found address: {seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - addr:{addr}')
+                    logger_found.info(f'[F][Mode ETH] Found address: {seed.hex()} | PVK compress:{btc_pvk_to_wif(pvk_int,True)} - addr:{addr}')
                     fc.increment(1)
                 co += 1
     return co
