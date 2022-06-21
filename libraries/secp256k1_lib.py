@@ -16,7 +16,7 @@ N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
 Zero=b'\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 #==============================================================================
 if platform.system().lower().startswith('win'):
-    dllfile = 'ice_secp256k1.dll'
+    dllfile = 'libraries/ice_secp256k1.dll'
     if os.path.isfile(dllfile) == True:
         pathdll = os.path.realpath(dllfile)
         ice = ctypes.CDLL(pathdll)
@@ -24,7 +24,7 @@ if platform.system().lower().startswith('win'):
         print('File {} not found'.format(dllfile))
     
 elif platform.system().lower().startswith('lin'):
-    dllfile = 'ice_secp256k1.so'
+    dllfile = 'libraries/ice_secp256k1.so'
     if os.path.isfile(dllfile) == True:
         pathdll = os.path.realpath(dllfile)
         ice = ctypes.CDLL(pathdll)

@@ -7,7 +7,7 @@
 """
 
 
-from secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address, btc_pvk_to_wif
+from libraries.secp256k1_lib import privatekey_to_ETH_address, privatekey_to_h160, hash_to_address, btc_pvk_to_wif
 from bip32 import BIP32
 from colorama import Back, Fore, Style, init
 from libraries.mnemonic import Mnemonic
@@ -29,20 +29,17 @@ green = Fore.GREEN+Style.BRIGHT
 current_path = path.dirname(path.realpath(__file__))
 logger_found = logging.getLogger('FOUND')
 logger_found.setLevel(logging.INFO)
-handler_found = logging.FileHandler(path.join(current_path, 'found.log'), 'a' , encoding ='utf-8')
-handler_found.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
+handler_found = logging.FileHandler(path.join(current_path+'/log', 'found.log'), 'a' , encoding ='utf-8')
 logger_found.addHandler(handler_found)
 
 logger_info = logging.getLogger('INFO')
 logger_info.setLevel(logging.INFO)
-handler_info = logging.FileHandler(path.join(current_path, 'info.log'), 'a' , encoding ='utf-8')
-handler_info.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
+handler_info = logging.FileHandler(path.join(current_path+'/log', 'info.log'), 'a' , encoding ='utf-8')
 logger_info.addHandler(handler_info)
 
 logger_err = logging.getLogger('ERROR')
 logger_err.setLevel(logging.DEBUG)
-handler_err = logging.FileHandler(path.join(current_path, 'error.log'), 'w' , encoding ='utf-8')
-handler_err.setFormatter(Formatter(fmt='[%(asctime)s:] %(message)s'))
+handler_err = logging.FileHandler(path.join(current_path+'/log', 'error.log'), 'w' , encoding ='utf-8')
 logger_err.addHandler(handler_err)
 
 class Counter:
@@ -63,14 +60,14 @@ class Counter:
             return self.val.value
 
 class inf:
-    version:str = '* Pulsar Lite v1.8 *'
+    version:str = '* Pulsar Lite v2.0 *'
     #general
     th:int = 1 #number of processes
     db_btc:str = ''
     bf_btc:BloomFilter
     db_eth:str = ''
     bf_eth:BloomFilter
-    l32:list = ["m/0'/0'/", "m/44'/0'/0'/", "m/0'/0/"]
+    l32:list = ["m/0'/0'/", "m/44'/0'/0'/", "m/0'/0/","m/0/"]
     bip:str = 'BTC'
     count:int = 1
     count_nem = 0
