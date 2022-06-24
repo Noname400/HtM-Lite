@@ -15,14 +15,9 @@ from filter import BloomFilter
 from secp256k1_lib import bech32_address_decode, address_to_h160, COIN_LTC
 
 current_path = path.dirname(path.realpath(__file__))
-logger_info = getLogger('INFO')
-logger_info.setLevel(INFO)
-handler_info = FileHandler(path.join(current_path, 'info.log'), 'w' , encoding ='utf-8')
-logger_info.addHandler(handler_info)
-
 logger_err = getLogger('ERROR')
 logger_err.setLevel(DEBUG)
-handler_err = FileHandler(path.join(current_path, 'error.log'), 'w' , encoding ='utf-8')
+handler_err = FileHandler(path.join(current_path+'/log', 'error.log'), 'w' , encoding ='utf-8')
 logger_err.addHandler(handler_err)
 
 def cls():
@@ -38,36 +33,36 @@ def date_str():
 def convert(line_count,file_in,file_out):
     bech_ = 0
     base_ = 0
-    eth_ = 0
+    hash_ = 0
     eth_0x = 0
     line_10 = 100000
     count = 0
     err= 0
-    lis = []
+    bloom_filter = BloomFilter(size=line_count, fp_probability=1e-12)
     print(f"[I] Start create list ...")
     st = time()
     with open(file_in, "r") as f:
         for line in f:
             res = line.strip()
             if res[:2] == '0x':
-                lis.append(res.lower()[2:])
+                bloom_filter.add(res[2:])
                 eth_0x += 1
             elif len(res) == 40:
-                lis.append(res.lower())
-                eth_ += 1
+                bloom_filter.add(res)
+                hash_ += 1
             elif res[:2] == 'bc' and len(res) >= 35 and len(res) <= 50:
                 h160 = bech32_address_decode(res)
-                lis.append(h160)
+                bloom_filter.add(h160)
                 bech_ += 1
             elif res[:2] == 'lt' and len(res) >= 35 and len(res) <= 50:
                 h160 = bech32_address_decode(res, COIN_LTC)
-                lis.append(h160)
+                bloom_filter.add(h160)
                 bech_ += 1
-            elif len(res) <= 35 and res[:2] != 's-' and res[:2] != 'm-' and res[:2] != 'd-':
+            elif len(res) >= 26 and res[:2] != 's-' and res[:2] != 'm-' and res[:2] != 'd-':
                 h160 = address_to_h160(res)
-                lis.append(h160)
+                bloom_filter.add(h160)
                 base_ += 1
-            elif res[:2] == 's-' or res[:2] == 'm-' and res[:2] == 'd-':
+            elif res[:2] == 's-' or res[:2] == 'm-' or res[:2] == 'd-':
                 logger_err.error(f'Error convert: {res}')
                 err += 1
             else:
@@ -77,24 +72,15 @@ def convert(line_count,file_in,file_out):
 
             count += 1
             if count == line_10:
-                print(f"> error: {err} | ETH 0x: {eth_0x}| ETH/H160: {eth_} | bech32: {bech_} | base58:{base_} | total: {count}",end='\r')
+                print(f"> error: {err} | ETH 0x: {eth_0x}| ETH/H160: {hash_} | bech32: {bech_} | base58:{base_} | total: {count}",end='\r')
                 line_10 +=100000
     print('\n')
-    print(f"[I] Finish create list ... ({time()-st:.2f} sec) | Total line: {len(lis)}")
+    print(f"[I] Finish create list ... ({time()-st:.2f} sec) | Total line: {count}")
     st = time()
-    print(f"[I] Start sorted list ...")
-    lis.sort()
-    print(f"[I] Finish sorted list: ({time()-st:.2f}) sec")
-    print(f"[I] Start create Bloom Filter: ...")
-    st = time()
-    bloom_filter = BloomFilter(size=line_count, fp_probability=1e-12)
-    for line in lis:
-        bloom_filter.add(line)
-    print(f"[I] Finish create Bloom filter ... ({time()-st:.2f}) sec)")
     with open(file_out, "wb") as fp:
         bloom_filter.save(fp)
-    
-    print(f"[END] error: {err} | ETH 0x: {eth_0x}| ETH/H160: {eth_} | bech32: {bech_} | base58:{base_} | total: {count}",end='\r')
+    print(f"[I] Bloom filter Seved. ({time()-st:.2f}) sec)")
+    print(f"[END] error: {err} | ETH 0x: {eth_0x}| ETH/H160: {hash_} | bech32: {bech_} | base58:{base_} | total: {count}",end='\r')
     print('\n')
 
 if __name__ == "__main__":
