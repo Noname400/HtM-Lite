@@ -40,14 +40,14 @@
     BTC:
     1. Загружаем базу данных BTC в папку BF-create.
     2. Открываю командную строку папки BF-create и вводим команду:
-    3. python bloom-create.py btc.txt bc.bf
+    3. python bloom-create.py btc.txt btc.bf
     btc.txt — текстовый файл с адресами (по одному адресу в строке)
     btc.bf - файл фильтра blum (создается автоматически)
 
     ETH:
     1. Загружем базу ETH в папку BF-create. Адреса в любом формате.
     2. Открываю командную строку папки BF-create и ввожу команду:
-    3. python bloom-create.py eth.txt with.bf
+    3. python bloom-create.py eth.txt eth.bf
     eth.txt — текстовый файл с адресами (по одному адресу в строке)
     eth.bf - файл фильтра blum (создается автоматически)
   
@@ -55,7 +55,7 @@
     python -B PulsarLite.py -b BTC -dbbtc BF\btc.bf -th 3 -sl 5
   
     -b Режим поиска (BIP32, ETH, BTC)  (-b BTC)
-    -dbbtc расположение файла ФлюмФильтра для BTC (-dbbtc BF/work.bf)
+    -dbbtc расположение файла ФлюмФильтра для BTC (-dbbtc BF/btc.bf)
     -dbeth расположение файла ФлюмФильтра для ETH (-dbeth BF/eth.bf)
     -th количество процессов запущенных для поиска (-th 2)
     -sl задержка по пуску блюм фильтра (у кого много ядер, рекомендую!) (-sl 5)
